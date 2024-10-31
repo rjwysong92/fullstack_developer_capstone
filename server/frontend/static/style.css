@@ -4,13 +4,15 @@ img{
 }
 
 .card{
-  border: rgb(103, 102, 105) 3px solid;
+  border: rgb(103, 102, 105) 15px solid;
   display: flex;  
   flex-direction: column;
   margin-left:5%;
   margin-right:5%;
   margin-top: 1%;
   margin-bottom: 1%;
+  border-radius: .5em;
+  overflow: hidden;
 }
 
 .row{
@@ -124,3 +126,4 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
