@@ -7,16 +7,14 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
-# Car Make model `class CarMake(models.Model)`:
+# <HINT> Create a Car Make model `class CarMake(models.Model)`:
 class CarMake(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(primary_key=True, max_length=50)
     description = models.TextField()
+    country_of_origin = models.TextField()
     number_of_models = models.IntegerField()
-
     def __str__(self):
         return self.name 
-
-
 # - Name
 # - Description
 # - Any other fields you would like to include in car make model
@@ -35,32 +33,41 @@ class CarModel(models.Model):
         ('TRUCK', 'Truck'),
         ('COUPE', 'Coupe'),
     ]
-    type = models.CharField(max_length=15, choices=CAR_TYPES, default='SUV')
+    type = models.CharField(max_length=15, choices=CAR_TYPES_CHOICES, default='SUV')
     year = models.IntegerField(default=2024,
         validators=[
             MaxValueValidator(2025),
             MinValueValidator(2015)
         ])
+    FUEL_TYPE = [
+        ('GASOLINE', 'Gasoline'),
+        ('HYBRID', 'Hybrid'),
+        ('ELECTRIC', 'Electric')
+    ]
+    efficiency_type = models.CharField(
+        null=False,
+        max_length=20, 
+        choices=FUEL_TYPE,
+        default='GASOLINE'
+    )
+    mpg = models.IntegerField(default=22,
+        validators=[
+            MaxValueValidator(60),
+            MinValueValidator(12)
+        ])
+    mpc = models.IntegerField(default=250,
+        validators=[
+            MaxValueValidator(500),
+            MinValueValidator(150)
+        ])
     
-    GASOLINE = 'Gas'
-    HYBRID = 'Hybrid'
-    ELECTRIC = 'EV'
-        FUEL_TYPE_CHOICES = [
-            ('GASOLINE', 'Gasoline'),
-            ('HYBRID', 'Hybrid'),
-            ('ELECTRIC', 'Electric')
-        ]    
     passenger_capacity = models.IntegerField(default=5, 
         validators=[
             MaxValueValidator(15),
             MinValueValidator(2)
         ])
-
     def __str__(self):
         return self.name
-
-
-
 # - Many-To-One relationship to Car Make model (One Car Make has many
 # Car Models, using ForeignKey field)
 # - Name
