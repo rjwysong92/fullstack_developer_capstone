@@ -7,12 +7,10 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
-# <HINT> Create a Car Make model `class CarMake(models.Model)`:
+# Car Make model `class CarMake(models.Model)`:
 class CarMake(models.Model):
-    name = models.CharField(primary_key=True, max_length=50)
+    name = models.CharField(max_length=50)
     description = models.TextField()
-    country_of_origin = models.TextField()
-    specialty = models.TextField()
     number_of_models = models.IntegerField()
 
     def __str__(self):
@@ -30,7 +28,7 @@ class CarModel(models.Model):
     car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     dealer_id = models.IntegerField()
-    CAR_TYPES =  [
+    CAR_TYPES_CHOICES =  [
         ('SEDAN', 'Sedan'),
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
@@ -43,28 +41,15 @@ class CarModel(models.Model):
             MaxValueValidator(2025),
             MinValueValidator(2015)
         ])
-    FUEL_TYPE = [
-        ('GASOLINE', 'Gasoline'),
-        ('HYBRID', 'Hybrid'),
-        ('ELECTRIC', 'Electric')
-    ]
-    efficiency_type = models.CharField(
-        null=False,
-        max_length=20, 
-        choices=FUEL_TYPE,
-        default='GASOLINE'
-    )
-    mpg = models.IntegerField(default=22,
-        validators=[
-            MaxValueValidator(60),
-            MinValueValidator(12)
-        ])
-    mpc = models.IntegerField(default=250,
-        validators=[
-            MaxValueValidator(500),
-            MinValueValidator(150)
-        ])
     
+    GASOLINE = 'Gas'
+    HYBRID = 'Hybrid'
+    ELECTRIC = 'EV'
+        FUEL_TYPE_CHOICES = [
+            ('GASOLINE', 'Gasoline'),
+            ('HYBRID', 'Hybrid'),
+            ('ELECTRIC', 'Electric')
+        ]    
     passenger_capacity = models.IntegerField(default=5, 
         validators=[
             MaxValueValidator(15),
