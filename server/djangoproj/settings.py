@@ -93,8 +93,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'PmuuuoLuttmnzbNfyzZqdJiP',
-        'HOST': '172.21.40.145',
+        'PASSWORD': 'J0Asy1CyGEhzcMccFifrxacW',
+        'HOST': '172.21.249.160',
         'PORT': '8000',
 
     }

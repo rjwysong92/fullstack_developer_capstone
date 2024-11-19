@@ -39,28 +39,30 @@ class CarModel(models.Model):
             MaxValueValidator(2025),
             MinValueValidator(2015)
         ])
-    FUEL_TYPE = [
+    FUEL_TYPE_CHOICES = [
         ('GASOLINE', 'Gasoline'),
         ('HYBRID', 'Hybrid'),
         ('ELECTRIC', 'Electric')
     ]
     efficiency_type = models.CharField(
-        null=False,
         max_length=20, 
-        choices=FUEL_TYPE,
+        choices=FUEL_TYPE_CHOICES,
         default='GASOLINE'
     )
-    mpg = models.IntegerField(default=22,
+    mpg = models.IntegerField( 
+        blank=True,
+        null=False,
         validators=[
             MaxValueValidator(60),
-            MinValueValidator(12)
+            MinValueValidator(0)
         ])
-    mpc = models.IntegerField(default=250,
+    mpc = models.IntegerField(
+        blank=True,
+        null=False,
         validators=[
             MaxValueValidator(500),
-            MinValueValidator(150)
+            MinValueValidator(0)
         ])
-    
     passenger_capacity = models.IntegerField(default=5, 
         validators=[
             MaxValueValidator(15),
