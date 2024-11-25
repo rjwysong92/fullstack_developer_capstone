@@ -30,12 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    long_link = 'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
-    'theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    long_link = "https://rjbrewer92-8000.theiadockernext-1-labs-prod-" \
+    "theiak8s-4-tor01.proxy.cognitiveclass.ai"
 ]
 CSRF_TRUSTED_ORIGINS = [
-    long_link = 'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
-    'theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    long_link = "https://rjbrewer92-8000.theiadockernext-1-labs-prod-" \
+    "theiak8s-4-tor01.proxy.cognitiveclass.ai"
 ]
 
 REST_FRAMEWORK = {
