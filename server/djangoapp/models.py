@@ -46,9 +46,9 @@ class CarModel(models.Model):
                             choices=CAR_TYPES_CHOICES,
                             default='SUV')
     year = models.IntegerField(default=2024,
-                               validators= [
-                                   MaxValueValidator (2025),
-                                   MinValueValidator (2015)
+                               validators=[
+                                   MaxValueValidator(2025),
+                                   MinValueValidator(2015)
                                ])
     FUEL_TYPE_CHOICES = [
         ('GASOLINE', 'Gasoline'),
@@ -61,22 +61,22 @@ class CarModel(models.Model):
     mpg = models.IntegerField(
         blank=True,
         null=False,
-        validators= [
+        validators=[
             MaxValueValidator(60),
             MinValueValidator(0)
             ])
     mpc = models.IntegerField(
         blank=True,
         null=False,
-        validators= [
+        validators=[
             MaxValueValidator(500),
             MinValueValidator(0)
             ])
     passenger_capacity = models.IntegerField(default=5,
-                                             validators= [
+                                             validators=[
                                                  MaxValueValidator(15),
                                                  MinValueValidator(2)
                                              ])
-    
+
     def __str__(self):
         return self.name
