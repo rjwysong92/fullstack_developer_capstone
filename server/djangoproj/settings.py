@@ -29,12 +29,12 @@ SECRET_KEY =\
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', 
-    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
+    'localhost',
+    long_link = 'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
     'theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
+    long_link = 'https://rjbrewer92-8000.theiadockernext-1-labs-prod-' \
     'theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 
@@ -108,7 +108,8 @@ SECRET_KEY = 'SECRET KEY for this Django Project'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        long_link = 'django.contrib.auth.password_validation.' \
+        'UserAttributeSimilarityValidator',
     },
     {
         'NAME':
