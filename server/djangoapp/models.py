@@ -21,6 +21,7 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
 
+
 # - Many-To-One relationship to Car Make model (One Car Make has many
 # Car Models, using ForeignKey field)
 # - Name
@@ -41,14 +42,14 @@ class CarModel(models.Model):
         ('TRUCK', 'Truck'),
         ('COUPE', 'Coupe'),
     ]
-    type = models.CharField(max_length=15, 
-                            choices=CAR_TYPES_CHOICES, 
+    type = models.CharField(max_length=15,
+                            choices=CAR_TYPES_CHOICES,
                             default='SUV')
     year = models.IntegerField(default=2024,
-        validators= [
-            MaxValueValidator(2025),
-            MinValueValidator(2015)
-            ])
+                               validators= [
+                                   MaxValueValidator (2025),
+                                   MinValueValidator (2015)
+                               ])
     FUEL_TYPE_CHOICES = [
         ('GASOLINE', 'Gasoline'),
         ('HYBRID', 'Hybrid'),
@@ -60,7 +61,7 @@ class CarModel(models.Model):
     mpg = models.IntegerField(
         blank=True,
         null=False,
-        validators=[
+        validators= [
             MaxValueValidator(60),
             MinValueValidator(0)
             ])
@@ -72,10 +73,10 @@ class CarModel(models.Model):
             MinValueValidator(0)
             ])
     passenger_capacity = models.IntegerField(default=5,
-        validators= [
-            MaxValueValidator(15),
-            MinValueValidator(2)
-            ])
+                                             validators= [
+                                                 MaxValueValidator(15),
+                                                 MinValueValidator(2)
+                                             ])
     
     def __str__(self):
         return self.name
