@@ -106,8 +106,7 @@ SECRET_KEY = 'SECRET KEY for this Django Project'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        long_link = 'django.contrib.auth.password_validation.' \
-        'UserAttributeSimilarityValidator',
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', # pylint: disable=line-too-long # noqa: E501
     },
     {
         'NAME':
