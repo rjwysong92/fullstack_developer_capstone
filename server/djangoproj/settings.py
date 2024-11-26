@@ -30,10 +30,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai' # pylint: disable=line-too-long # noqa: E501
+    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'  # pylint: disable=line-too-long # noqa: E501
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai' # pylint: disable=line-too-long # noqa: E501
+    'https://rjbrewer92-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'  # pylint: disable=line-too-long # noqa: E501
 ]
 
 REST_FRAMEWORK = {
@@ -106,7 +106,7 @@ SECRET_KEY = 'SECRET KEY for this Django Project'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME':
-        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator', # pylint: disable=line-too-long # noqa: E501
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # pylint: disable=line-too-long # noqa: E501
     },
     {
         'NAME':
