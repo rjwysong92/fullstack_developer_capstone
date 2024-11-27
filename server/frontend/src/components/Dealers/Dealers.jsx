@@ -25,23 +25,48 @@ const Dealers = () => {
       setDealersList(state_dealers)
     }
   }
-
+  
   const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
+  const res = await fetch(dealer_url, {
       method: "GET"
-    });
-    const retobj = await res.json();
-    if(retobj.status === 200) {
+  });
+  const retobj = await res.json();
+  if(retobj.status === 200) {
       let all_dealers = Array.from(retobj.dealers)
       let states = [];
       all_dealers.forEach((dealer)=>{
-        states.push(dealer.state)
+      states.push(dealer.state)
       });
 
-      setStates(Array.from(new Set(states)))
-      setDealersList(all_dealers)
-    }
+    setStates(Array.from(new Set(states)))
+    setDealersList(all_dealers)
+    setOriginalDealers(all_dealers);
   }
+  }
+
+  {/* function to manage input changes and filter dealers based on entered state query */}
+  const handleInputChange = (event) => {
+  const query = event.target.value;
+  setSearchQuery(query);
+  const filtered = originalDealers.filter(dealer =>
+    dealer.state.toLowerCase().includes(query.toLowerCase())
+  );
+  setDealersList(filtered);
+  };
+
+  {/* verifies if the searchQuery state is empty upon execution */}
+  const handleLostFocus = () => {
+  if (!searchQuery) {
+    setDealersList(originalDealers);
+  }
+  }
+
+  {/* utilizes the useState hook to create a state variable named searchQuery and a corresponding func setSearchQuery to update its value */}
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const [originalDealers, setOriginalDealers] = useState([]);
+
+
   useEffect(() => {
     get_dealers();
   },[]);  
@@ -60,13 +85,8 @@ return(
       <th>Address</th>
       <th>Zip</th>
       <th>
-      <select name="state" id="state" onChange={(e) => filterDealers(e.target.value)}>
-      <option value="" selected disabled hidden>State</option>
-      <option value="All">All States</option>
-      {states.map(state => (
-          <option value={state}>{state}</option>
-      ))}
-      </select>        
+      {/* input field for filtering string */}
+      <input type="text" placeholder="Search states..." onChange={handleInputChange} onBlur={handleLostFocus} value={searchQuery} />        
 
       </th>
       {isLoggedIn ? (
